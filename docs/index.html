@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trooper Transcribe — Offline audio transcription for investigators</title>
+<meta name="description" content="USB-portable, fully offline audio transcription and speaker diarization built for law enforcement interview audio.">
+<style>
+  :root{
+    --ink:#0A0A0A;
+    --bone:#E8E2D6;
+    --brass:#C9A227;
+    --khaki:#8A7A5C;
+    --line:#241F16;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--bone);
+    font-family:"Inter","Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    letter-spacing:.005em;
+  }
+  .wrap{max-width:58ch;margin:0 auto;padding:0 24px}
+  header{padding:72px 0 8px;text-align:center}
+  header img{width:min(320px,80vw);height:auto;display:block;margin:0 auto}
+  .tag{
+    margin:20px auto 0;
+    color:var(--khaki);
+    font-size:15px;
+    max-width:44ch;
+  }
+  hr{
+    border:0;
+    border-top:1px solid var(--line);
+    margin:56px 0;
+  }
+  h2{
+    font-size:19px;
+    font-weight:600;
+    letter-spacing:.01em;
+    color:var(--brass);
+    margin:0 0 12px;
+  }
+  p{margin:0 0 18px}
+  section{margin-bottom:44px}
+  .actions{display:flex;flex-wrap:wrap;gap:14px;margin:32px 0 8px}
+  a.btn{
+    display:inline-block;
+    padding:13px 22px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+    border:1px solid var(--brass);
+    color:var(--ink);
+    background:var(--brass);
+  }
+  a.btn.ghost{background:transparent;color:var(--brass)}
+  a.btn:hover{background:#DCB537;color:var(--ink)}
+  a.btn.ghost:hover{background:rgba(201,162,39,.12);color:var(--brass)}
+  a.btn:focus-visible,a:focus-visible{outline:2px solid var(--bone);outline-offset:3px}
+  .note{font-size:15px;color:var(--khaki)}
+  a{color:var(--brass)}
+  footer{
+    border-top:1px solid var(--line);
+    margin-top:64px;
+    padding:28px 0 60px;
+    font-size:14px;
+    color:var(--khaki);
+  }
+  @media (max-width:520px){
+    body{font-size:16px}
+    header{padding-top:48px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img src="TrooperTranscribe_Logo.png" alt="Trooper Transcribe">
+    <p class="tag">Interview audio goes in. A speaker-separated transcript comes out. Nothing leaves the machine.</p>
+  </header>
+
+  <hr>
+
+  <section>
+    <h2>What it does</h2>
+    <p>Trooper Transcribe converts recorded interviews and statements into timestamped text and separates the speakers, so a two-hour interview becomes a document you can read, search, and attach to a case file.</p>
+    <p>It runs from a USB drive on a standard Windows 10 or 11 workstation. Audio files, models, and transcripts stay on that machine. There is no account, no upload, and no network connection required once setup is complete.</p>
+  </section>
+
+  <section>
+    <h2>Get it</h2>
+    <p>The pre-configured version installs and runs without setting up Python or a build environment. The source version is free and requires you to assemble the environment yourself.</p>
+    <div class="actions">
+      <a class="btn" href="https://caseykeown.com/troopertranscribe">Get the ready-to-run version</a>
+      <a class="btn ghost" href="https://github.com/keown-work/TrooperTranscribe">Build it from source</a>
+    </div>
+    <p class="note">Speaker separation uses pyannote models. Each user accepts the model terms once on Hugging Face and downloads the weights during setup. After that, the tool operates offline.</p>
+  </section>
+
+  <section>
+    <h2>For IT and command staff</h2>
+    <p>Processing is local. Audio is never transmitted to a cloud service, an API, or a vendor server, and no case data is retained outside the folders you choose.</p>
+    <p>The tool does not generate content. It does not draft reports, summarize, draw conclusions, or produce investigative narrative, which places it outside the generative category addressed by KSP General Order AM-C-7a. Output is a mechanical transcription of recorded speech.</p>
+    <p>Transcripts are a working draft. The investigator is responsible for reviewing the transcript against the source audio before it is relied on or entered into a case file.</p>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+    <p>Reach out through <a href="https://caseykeown.com/troopertranscribe">caseykeown.com/troopertranscribe</a> or open an issue on the GitHub repository.</p>
+  </section>
+
+  <footer>
+    Trooper Transcribe — built and maintained by Casey Keown, Leitchfield, Kentucky.
+  </footer>
+
+</div>
+</body>
+</html>
