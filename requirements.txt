@@ -9,3 +9,6 @@ python-docx
 reportlab
 pydantic
 huggingface_hub
+soundfile
+numpy
+av

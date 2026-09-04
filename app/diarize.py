@@ -40,12 +40,16 @@ def diarize_audio(audio_path: str, models_path: Path, num_speakers: Optional[int
     try:
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         
-        # Load the pipeline
-        # Note: Replace 'YOUR_HF_TOKEN_HERE' with your actual token
-        pipeline = Pipeline.from_pretrained(
-            "pyannote/speaker-diarization-3.1", 
-            use_auth_token="YOUR_HF_TOKEN_HERE"
-        )
+        # Load the pipeline. Fully offline (HF_HUB_OFFLINE=1, set in main.py) -
+        # resolves entirely from the local cache built by setup_models.py, so
+        # no auth token is needed here.
+        pipeline = Pipeline.from_pretrained("pyannote/speaker-diarization-3.1")
+        if pipeline is None:
+            raise RuntimeError(
+                "Could not load the pyannote/speaker-diarization-3.1 pipeline "
+                "from the local model cache. Re-run setup_models.py on the "
+                "build machine and repackage the 'models' folder."
+            )
         pipeline.to(device)
 
         audio_data, sr = sf.read(tmp_wav.name, dtype="float32")

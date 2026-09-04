@@ -18,9 +18,13 @@ _default_models = Path(__file__).parent.parent / "models"
 MODELS_PATH = Path(os.environ.get("KSP_MODELS_PATH", str(_default_models)))
 
 # Set HuggingFace environment BEFORE any HF imports
+# Offline flags are set by launch.bat and must not be overridden here -
+# forcing them online breaks pyannote's gated-model auth check and makes
+# this process reach the network, which contradicts "no data leaves this
+# machine". Only fill them in if something ran this outside launch.bat.
 os.environ["HF_HOME"] = str(MODELS_PATH / "pyannote")
-os.environ["HF_HUB_OFFLINE"] = "0"
-os.environ["TRANSFORMERS_OFFLINE"] = "0"
+os.environ.setdefault("HF_HUB_OFFLINE", "1")
+os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
 
 from fastapi import FastAPI, UploadFile, File, BackgroundTasks, HTTPException
 from fastapi.staticfiles import StaticFiles
