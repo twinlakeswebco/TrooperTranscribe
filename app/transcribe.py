@@ -28,7 +28,10 @@ def transcribe_audio(
     # 'int8_float16' is the sweet spot for speed and stability on portable hardware.
     compute_type = "int8_float16" if cuda else "int8"
     
-    whisper_cache = str(models_path / "whisper")
+    # Must match the per-model download_root used in setup_models.py
+    # (models/whisper/<model_name>/...), not just models/whisper/ -
+    # otherwise local_files_only=True can't find the cached snapshot.
+    whisper_cache = str(models_path / "whisper" / model_name)
 
     if progress_callback:
         mode_label = "GPU" if cuda else "CPU"
